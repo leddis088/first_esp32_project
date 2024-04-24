@@ -9,7 +9,7 @@
 #define BUZZZER_PIN  18
 
 const char* ssid = "";
-const char* password = "";
+const char* password = ";
 
 const char* apiToken = "";
 const char* userToken = "";
@@ -416,9 +416,9 @@ void loop() {
  */
 void startup() {
   lcd.clear();
-  lcd.print("LOADING OS...");
-  Serial.println("LOADING OS...");
-  sendDiscordMessage("LOADING OS...");
+  lcd.print("BOOTING SYSTEM...");
+  Serial.println("BOOTING SYSTEM...");
+  sendDiscordMessage("BOOTING SYSTEM...");
   delay(1500);
   lcd.setCursor(0,1);
   lcd.print("ALARM OS v.0.5");
@@ -431,7 +431,7 @@ void startup() {
   sendDiscordMessage("LOADING SOUNDFILES..");
   delay(1500);
   lcd.clear();
-  lcd.print("LOADING OS...");
+  lcd.print("BOOTING SYSTEM...");
   lcd.setCursor(0,1);
   lcd.print("ALARM OS v.0.5");
   lcd.setCursor(0,2);
@@ -441,10 +441,16 @@ void startup() {
   sendDiscordMessage("SOUNDFILES LOADED");
   delay(750);
   lcd.clear();
+  lcd.setCursor(2,1);
+  lcd.print("SYSTEM IS BOOTED");
+  Serial.println("SYSTEM IS BOOTED");
+  sendDiscordMessage("SYSTEM IS BOOTED");
+  delay(750);
+  lcd.clear();
   lcd.setCursor(3,1);
-  lcd.print("ALARM IS READY");
-  Serial.println("ALARM IS READY");
-  sendDiscordMessage("ALARM IS READY");
+  lcd.print("ALARM IS ARMED");
+  Serial.println("ALARM IS ARMED");
+  sendDiscordMessage("ALARM IS ARMED");
   digitalWrite(greenLED, HIGH);
   Serial.println("GREEN LED status HIGH");
   swOnOff = 1;
@@ -589,8 +595,8 @@ void alarm() {
       lcd.clear();
       lcd.print("ALARM OS v.0.5");
       lcd.setCursor(7,1);
-      lcd.print("ALARM");
-      sendDiscordMessage("ALARM");
+      lcd.print("ALARM!");
+      sendDiscordMessage("ALARM!");
     }
     for (int thisNote = 0; thisNote < 14; thisNote++) {
       int noteDuration = 1000 / noteDurations[thisNote];
